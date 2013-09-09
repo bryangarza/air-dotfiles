@@ -68,7 +68,7 @@ alias rr='rm -rv'
 alias c='clear'
 
 
-PS1="%~ $ "
+PS1="%~ 🚀  "
 export PS1
 
 ### Added by the Heroku Toolbelt
