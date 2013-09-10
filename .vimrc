@@ -63,6 +63,8 @@ set shiftwidth=4
 " When on, a <Tab> in front of a line inserts balnks according to 'shiftwidth'
 set smarttab
 
+au FileType sh setl sw=2 sts=2 et
+
 " Influences the working of <BS>, <Del>, <CTRL-W>, <CTRL-U> in Insert mode.
 " This is a list of items, separated by commas. Each item allows a way to
 " backspace over something:
@@ -82,7 +84,7 @@ set textwidth=79
 "set background=dark
 
 " Set the color scheme.
-colorscheme evening
+colorscheme koehler
 "colorscheme solarized
 
 " Print the line number in front of each line.
