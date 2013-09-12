@@ -34,11 +34,11 @@ tputcolors() {
 }
 
 echocolors() {
-    #   This file echoes a bunch of color codes to the 
-    #   terminal to demonstrate what's available.  Each 
+    #   This file echoes a bunch of color codes to the
+    #   terminal to demonstrate what's available.  Each
     #   line is the color code of one forground color,
-    #   out of 17 (default + 16 escapes), followed by a 
-    #   test use of that color on all nine background 
+    #   out of 17 (default + 16 escapes), followed by a
+    #   test use of that color on all nine background
     #   colors (default + 8 escapes).
 
     T='gYw'   # The test text
@@ -78,5 +78,11 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 colorlist() {
     for i in {0..255}; do
         printf "\x1b[38;5;${i}mcolour${i}\n"
+    done
+}
+
+colorliststraight() {
+    for i in {0..255}; do
+        printf "\x1b[38;5;${i}mcolour${i} "
     done
 }

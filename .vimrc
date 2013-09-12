@@ -2,26 +2,69 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Let me hide modified buffers
+set hidden
+
+" highlight search matches
+set hlsearch
+
+" To clear highlighted matches until next search
+nnoremap <esc> :noh<return><esc>
+
+" Change the leader key from \ to ,
+let mapleader=","
+
+" To use ,n and ,p (:bn => :bnext; :bp => :bprevious)
+map <Leader>n :bnext<CR>
+map <Leader>p :bprevious<CR>
+
 set encoding=utf-8
 
-" Required for Vundle
-filetype off
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" Let Vundle manage Vundle; required!
-Bundle 'gmarik/vundle'
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 
 " My Bundles :)
-Bundle 'bling/vim-airline'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-bufferline'
+"NeoBundle 'Shougo/unite.vim'
 
-let g:airline_theme='bubblegum'
+" Required by unite.vim
+"NeoBundle 'Shougo/vimproc', {
+"            \ 'build' : {
+"            \     'windows' : 'make -f make_mingw32.mak',
+"            \     'cygwin' : 'make -f make_cygwin.mak',
+"            \     'mac' : 'make -f make_mac.mak',
+"            \     'unix' : 'make -f make_unix.mak',
+"            \    },
+"            \ }
+
+NeoBundleCheck
+
+let g:airline_theme='base16'
 "let g:airline_powerline_fonts = 1
-let g:airline_left_sep = '»'
+let g:airline_left_sep = ''
 "let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
+let g:airline_right_sep = ''
 "let g:airline_right_sep = '◀'
+
+let g:bufferline_echo = 0
+autocmd VimEnter *
+            \ let &statusline='%{bufferline#refresh_status()}'
+            \ .bufferline#get_status_string()
+
+" Don't need this, I have vim-bufferline
+" Automatically displays all buffers when there's only one tab open.
+"let g:airline#extensions#tabline#enabled = 1
+
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap f :Unite file_rec/async:!<cr>
 
 
 " Set terminal title to filename
@@ -84,8 +127,9 @@ set textwidth=79
 "set background=dark
 
 " Set the color scheme.
-colorscheme koehler
+"colorscheme koehler
 "colorscheme solarized
+colorscheme hybrid
 
 " Print the line number in front of each line.
 set number
