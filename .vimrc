@@ -2,27 +2,13 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Let me hide modified buffers
-set hidden
-
-"" Searching
-set hlsearch                    " highlight matches
-set incsearch                   " incremental searching
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ... unless they contain at least one capital letter
-
-" To clear highlighted matches until next search
-nnoremap <esc> :noh<return><esc>
-
-" Change the leader key from \ to ,
-let mapleader=","
-
-" To use ,n and ,p (:bn => :bnext; :bp => :bprevious)
-map <Leader>n :bnext<CR>
-map <Leader>p :bprevious<CR>
-
 set encoding=utf-8
 
+" Set terminal title to filename
+set title
+
+
+" Plugins
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -32,55 +18,55 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-
-" My Bundles :)
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
-"NeoBundle 'Shougo/unite.vim'
-
-" Required by unite.vim
-"NeoBundle 'Shougo/vimproc', {
-"            \ 'build' : {
-"            \     'windows' : 'make -f make_mingw32.mak',
-"            \     'cygwin' : 'make -f make_cygwin.mak',
-"            \     'mac' : 'make -f make_mac.mak',
-"            \     'unix' : 'make -f make_unix.mak',
-"            \    },
-"            \ }
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundleCheck
 
 let g:airline_theme='base16'
-"let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
-"let g:airline_left_sep = '▶'
 let g:airline_right_sep = ''
-"let g:airline_right_sep = '◀'
 
 let g:bufferline_echo = 0
 autocmd VimEnter *
             \ let &statusline='%{bufferline#refresh_status()}'
             \ .bufferline#get_status_string()
 
-" Don't need this, I have vim-bufferline
-" Automatically displays all buffers when there's only one tab open.
-"let g:airline#extensions#tabline#enabled = 1
 
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap f :Unite file_rec/async:!<cr>
+" Highlight matches
+set hlsearch
+" Incremental searching
+set incsearch
+" Case-insensitive searching...
+set ignorecase
+" Unless they contain at least one capital letter.
+set smartcase
+" While typing a search command, show where the pattern, as it was typed so far,
+" When a bracket is inserted, briefly jump to the matching one. A Beep is given
+" if there is no match.
+set showmatch
+" Clear highlighted matches until next search
+nnoremap <esc> :noh<return><esc>
 
 
-" Set terminal title to filename
-set title
+" Let me hide modified buffers
+set hidden
+
+" Change the leader key from \ to ,
+let mapleader=","
+
+" Use ,n and ,p (:bn => :bnext; :bp => :bprevious)
+map <Leader>n :bnext<CR>
+map <Leader>p :bprevious<CR>
+
 
 " Switch syntax highlighting on.
 syntax on
 
-" Enable loading the plugin files for specific file types.
-filetype plugin on
-
-" Enable loading the indent file for specific file types.
-filetype indent on
+" Enable loading the plugin + indent files for specific file types.
+filetype plugin indent on
 
 " Copy indent from current line when starting a new line.
 set autoindent
@@ -125,8 +111,8 @@ set backspace=indent,eol,start
 " after whitespace to get this width. A zero value disables this.
 set textwidth=79
 
-" When set to dark, Vim will try to use colors that look good on a dark
-" background.
+" When set to dark, Vim will try to use colors that look good on a dark bg.
+" Note: This broke colors.
 "set background=dark
 
 " Set the color scheme.
@@ -137,30 +123,28 @@ colorscheme hybrid
 " Print the line number in front of each line.
 set number
 
-" While typing a search command, show where the pattern, as it was typed so far,
-" When a bracket is inserted, briefly jump to the matching one. A Beep is given
-" if there is no match.
-set showmatch
-
 " Highlight the screen line of the cursor with CursorLine.
-" set cursorline " cursorcolumn
+set cursorline
+" set cursorcolumn
 
 " View the changes you have made to a buffer since the file was loaded
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 set laststatus=2
 
-set statusline=
-set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
+" Handled by vim-bufferline
+" set statusline=
+" set statusline +=%1*\ %n\ %*            "buffer number
+" set statusline +=%5*%{&ff}%*            "file format
+" set statusline +=%3*%y%*                "file type
+" set statusline +=%4*\ %<%F%*            "full path
+" set statusline +=%2*%m%*                "modified flag
+" set statusline +=%1*%=%5l%*             "current line
+" set statusline +=%2*/%L%*               "total lines
+" set statusline +=%1*%4v\ %*             "virtual column number
+" set statusline +=%2*0x%04B\ %*          "character under cursor
 
+" Highlight the trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
