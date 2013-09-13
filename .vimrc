@@ -5,8 +5,11 @@ set nocompatible
 " Let me hide modified buffers
 set hidden
 
-" highlight search matches
-set hlsearch
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
 
 " To clear highlighted matches until next search
 nnoremap <esc> :noh<return><esc>
