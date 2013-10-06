@@ -22,6 +22,10 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'scrooloose/syntastic.git'
 
 NeoBundleCheck
 
@@ -33,6 +37,11 @@ let g:bufferline_echo = 0
 autocmd VimEnter *
             \ let &statusline='%{bufferline#refresh_status()}'
             \ .bufferline#get_status_string()
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 
 " Highlight matches
@@ -95,8 +104,6 @@ set shiftwidth=4
 " When on, a <Tab> in front of a line inserts balnks according to 'shiftwidth'
 set smarttab
 
-au FileType sh setl sw=2 sts=2 et
-
 " Influences the working of <BS>, <Del>, <CTRL-W>, <CTRL-U> in Insert mode.
 " This is a list of items, separated by commas. Each item allows a way to
 " backspace over something:
@@ -157,3 +164,6 @@ function! TrimWhiteSpace()
 endfunction
 " To 'auto-trim' trailing whitespace
 "autocmd BufWritePre     *.rb :call TrimWhiteSpace()
+
+au FileType sh setl sw=2 sts=2 et
+au FileType html setl sw=2 sts=2 et wrap tw=0 wrapmargin=0 lbr
