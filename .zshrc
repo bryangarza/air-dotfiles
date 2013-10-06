@@ -12,8 +12,23 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd nomatch
 unsetopt beep
-bindkey -v
 # End of lines configured by zsh-newuser-install
+
+bindkey -v
+
+bindkey '^r' history-incremental-search-backward
+
+autoload -U colors && colors
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% %{$reset_color%}NORMAL%{$fg_bold[yellow]%}]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
 
 
 export EDITOR=vim
