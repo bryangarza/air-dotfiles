@@ -26,6 +26,8 @@ NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'pangloss/vim-javascript.git'
+NeoBundle 'digitaltoad/vim-jade'
 
 NeoBundleCheck
 
