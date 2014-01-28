@@ -81,6 +81,7 @@ alias cp='cp -v'
 alias rm='rm -v'
 alias rr='rm -rv'
 alias c='clear'
+alias fixappicons='rm ~/Library/Application\ Support/Dock/*.db ; killall Dock'
 
 
 PS1="%~ 🚀  "
