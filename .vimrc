@@ -34,6 +34,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'vim-scripts/paredit.vim'
 NeoBundle 'pangloss/vim-javascript.git'
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 NeoBundleCheck
 
@@ -191,3 +192,5 @@ nnoremap <F11> :set nonumber!<CR>
 " underline matches instead of highlighting with that ugly yellow
 highlight Search ctermfg=black ctermbg=white
 highlight IncSearch ctermbg=black ctermfg=grey
+
+set shell=/bin/bash
