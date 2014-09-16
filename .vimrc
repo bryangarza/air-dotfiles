@@ -6,48 +6,6 @@ set encoding=utf-8
 " Set terminal title to filename
 set title
 
-" Plugins
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'https://github.com/mattn/gist-vim'
-NeoBundle 'https://github.com/mattn/webapi-vim'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'tpope/vim-classpath.git'
-NeoBundle 'tpope/vim-leiningen'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'guns/vim-clojure-highlight'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'vim-scripts/paredit.vim'
-NeoBundle 'pangloss/vim-javascript.git'
-NeoBundle 'christoomey/vim-tmux-navigator'
-
-NeoBundleCheck
-
-let g:ctrlp_map = '<Leader>f'
-let g:gist_clip_command = 'pbcopy'
-let g:airline_theme='dark'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 " Highlight matches
 set hlsearch
 " Incremental searching
@@ -61,7 +19,20 @@ set smartcase
 " if there is no match.
 set showmatch
 " Clear highlighted matches until next search
+
 nnoremap <esc> :noh<return><esc>
+" Number of spaces that a <Tab> in the file counts for.
+set tabstop=4
+" Controls how many columns Vim uses when <Tab> is pressed in insert mode.
+set softtabstop=4
+" When set, hitting <Tab> in insert mode will produce the appropriate
+" number of spaces.
+set expandtab
+" How many columns text is indented with reindent operations (>> & <<) and
+" automatic C-style indentation
+set shiftwidth=4
+" When on, a <Tab> in front of a line inserts balnks according to 'shiftwidth'
+set smarttab
 
 " Let me hide modified buffers
 set hidden
@@ -103,19 +74,6 @@ set noesckeys
 
 " Fix the delete key
 fixdel
-
-" Number of spaces that a <Tab> in the file counts for.
-set tabstop=4
-" Controls how many columns Vim uses when <Tab> is pressed in insert mode.
-set softtabstop=4
-" When set, hitting <Tab> in insert mode will produce the appropriate
-" number of spaces.
-set expandtab
-" How many columns text is indented with reindent operations (>> & <<) and
-" automatic C-style indentation
-set shiftwidth=4
-" When on, a <Tab> in front of a line inserts balnks according to 'shiftwidth'
-set smarttab
 
 " Influences the working of <BS>, <Del>, <CTRL-W>, <CTRL-U> in Insert mode.
 " This is a list of items, separated by commas. Each item allows a way to
@@ -176,6 +134,7 @@ endfunction
 " To 'auto-trim' trailing whitespace
 "autocmd BufWritePre     *.rb :call TrimWhiteSpace()
 
+au FileType c setl sw=8 sts=8 et
 au FileType sh setl sw=2 sts=2 et
 au FileType javascript setl sw=2 sts=2 et
 au FileType ruby setl sw=2 sts=2 et
@@ -194,3 +153,52 @@ highlight Search ctermfg=black ctermbg=white
 highlight IncSearch ctermbg=black ctermfg=grey
 
 set shell=/bin/bash
+
+" Plugins
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-bufferline'
+NeoBundle 'https://github.com/mattn/gist-vim'
+NeoBundle 'https://github.com/mattn/webapi-vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'tpope/vim-classpath.git'
+NeoBundle 'tpope/vim-leiningen'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'guns/vim-clojure-highlight'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'vim-scripts/paredit.vim'
+NeoBundle 'pangloss/vim-javascript.git'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-fugitive'
+
+NeoBundleCheck
+
+let g:ctrlp_map = '<Leader>f'
+let g:gist_clip_command = 'pbcopy'
+let g:airline_theme='dark'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" Use gofmt instead of gomimports to stop deleting imports
+" Not sure if this is needed, will wait until the problem pops up again.
+"let g:go_fmt_command = "gofmt"
