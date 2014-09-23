@@ -90,16 +90,16 @@ set backspace=indent,eol,start
 set textwidth=79
 
 " When set to dark, Vim will try to use colors that look good on a dark bg.
-" Note: This broke colors.
-"set background=dark
+set background=dark
 
 " Set the color scheme.
 "colorscheme koehler
 "colorscheme elflord
 "colorscheme hybrid
-colorscheme peachpuff
+"colorscheme peachpuff
+colorscheme base16-chalk
 let g:hybrid_use_iTerm_colors = 1
-highlight LineNr ctermfg=238
+highlight LineNr ctermfg=238 ctermbg=0
 
 " Print in black and white
 set printoptions+=syntax:n
@@ -111,9 +111,9 @@ let g:gitgutter_sign_modified_removed = 'x'
 set number
 
 " Highlight the screen line of the cursor with CursorLine.
-set cursorline
+"set cursorline
 " set cursorcolumn
-highlight CursorLine cterm=NONE ctermbg=233
+"highlight CursorLine cterm=NONE ctermbg=0
 
 " View the changes you have made to a buffer since the file was loaded
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
@@ -167,12 +167,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
-NeoBundle 'https://github.com/mattn/gist-vim'
-NeoBundle 'https://github.com/mattn/webapi-vim'
+"NeoBundle 'https://github.com/mattn/gist-vim'
+"NeoBundle 'https://github.com/mattn/webapi-vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'digitaltoad/vim-jade'
+"NeoBundle 'tpope/vim-unimpaired'
+"NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-classpath.git'
 NeoBundle 'tpope/vim-leiningen'
@@ -202,3 +202,8 @@ au Syntax * RainbowParenthesesLoadBraces
 " Use gofmt instead of gomimports to stop deleting imports
 " Not sure if this is needed, will wait until the problem pops up again.
 "let g:go_fmt_command = "gofmt"
+
+highlight GitGutterAdd ctermbg=none
+highlight GitGutterChange ctermbg=none
+highlight GitGutterDelete ctermbg=none
+highlight GitGutterChangeDelete ctermbg=none
