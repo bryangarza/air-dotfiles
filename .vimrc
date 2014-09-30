@@ -90,14 +90,14 @@ set backspace=indent,eol,start
 set textwidth=79
 
 " When set to dark, Vim will try to use colors that look good on a dark bg.
-set background=dark
+" set background=dark
 
 " Set the color scheme.
 "colorscheme koehler
 "colorscheme elflord
 "colorscheme hybrid
-"colorscheme peachpuff
 colorscheme base16-chalk
+"colorscheme pablo
 let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
 
@@ -169,7 +169,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 "NeoBundle 'https://github.com/mattn/gist-vim'
 "NeoBundle 'https://github.com/mattn/webapi-vim'
-NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'eapache/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-commentary'
 "NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'digitaltoad/vim-jade'
