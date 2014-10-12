@@ -100,6 +100,8 @@ colorscheme base16-chalk
 "colorscheme pablo
 let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
+set fillchars+=vert:\│
+highlight VertSplit ctermfg=0 ctermbg=0
 
 " Print in black and white
 set printoptions+=syntax:n
@@ -167,8 +169,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
-"NeoBundle 'https://github.com/mattn/gist-vim'
-"NeoBundle 'https://github.com/mattn/webapi-vim'
+NeoBundle 'https://github.com/mattn/gist-vim'
+NeoBundle 'https://github.com/mattn/webapi-vim'
 NeoBundle 'eapache/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-commentary'
 "NeoBundle 'tpope/vim-unimpaired'
@@ -193,6 +195,7 @@ let g:gist_clip_command = 'pbcopy'
 let g:airline_theme='dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_theme = 'jellybeans'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -207,3 +210,7 @@ highlight GitGutterAdd ctermbg=none
 highlight GitGutterChange ctermbg=none
 highlight GitGutterDelete ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
+
+highlight CtrlPPrtText ctermbg=black ctermfg=gray
+highlight CtrlPPrtBase ctermbg=black ctermfg=gray
+highlight CursorLine ctermbg=black ctermfg=gray
