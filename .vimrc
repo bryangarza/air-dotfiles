@@ -123,12 +123,16 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 set laststatus=2
 
 " Highlight the trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+function! HLWhitespace()
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+endfunction
+
+call HLWhitespace()
 
 function! TrimWhiteSpace()
     %s/\s\+$//e
@@ -146,6 +150,14 @@ au FileType scss setl sw=2 sts=2 et
 au FileType java setl sw=4 sts=4 et
 au FileType html setl sw=2 sts=2 et wrap tw=0 wrapmargin=0 lbr
 au FileType jade setl sw=2 sts=2 et wrap tw=0 wrapmargin=0 lbr
+au FileType coffee setl sw=2 et
+
+" For Example: if not coffeescript
+"
+" if &ft !~ 'coffee'
+"     call HLWhitespace()
+" endif
+
 
 set pastetoggle=<F10>
 nnoremap <F11> :set nonumber!<CR>
@@ -187,6 +199,7 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundleCheck
 
@@ -214,3 +227,5 @@ highlight GitGutterChangeDelete ctermbg=none
 highlight CtrlPPrtText ctermbg=black ctermfg=gray
 highlight CtrlPPrtBase ctermbg=black ctermfg=gray
 highlight CursorLine ctermbg=black ctermfg=gray
+
+highlight link coffeeSpaceError NONE
