@@ -96,7 +96,7 @@ set textwidth=79
 "colorscheme koehler
 "colorscheme elflord
 "colorscheme hybrid
-colorscheme base16-chalk
+colorscheme base16-ocean
 "colorscheme pablo
 let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
@@ -173,7 +173,8 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -195,11 +196,14 @@ NeoBundle 'guns/vim-clojure-highlight'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'vim-scripts/paredit.vim'
 NeoBundle 'pangloss/vim-javascript.git'
+NeoBundle 'mxw/vim-jsx'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kchmck/vim-coffee-script'
+
+call neobundle#end()
 
 NeoBundleCheck
 
@@ -229,3 +233,6 @@ highlight CtrlPPrtBase ctermbg=black ctermfg=gray
 highlight CursorLine ctermbg=black ctermfg=gray
 
 highlight link coffeeSpaceError NONE
+
+" Include JSX highlighting in `.js` files also, not just `.jsx`
+let g:jsx_ext_required = 0

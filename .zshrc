@@ -100,6 +100,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias bgcc='/usr/local/bin/gcc-4.9'
+alias gs='git status'
+alias gd='git diff'
+alias gp='git push'
 
 
 PS1="%~ λ "
@@ -119,8 +123,8 @@ colorliststraight() {
         printf "\x1b[38;5;${i}mcolour${i} "
     done
 }
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 export PATH=/usr/local/sbin:$PATH
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 source /Users/bryangarza/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /Users/bryangarza/bin/sshaliases
+source /Users/bryangarza/Dropbox/bin/sshaliases
