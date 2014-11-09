@@ -102,6 +102,9 @@ let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
 set fillchars+=vert:\│
 highlight VertSplit ctermfg=0 ctermbg=0
+" Remove the tildes (~) from past the EOF
+highlight NonText ctermfg=bg
+highlight MatchParen cterm=bold ctermbg=red ctermfg=0
 
 " Print in black and white
 set printoptions+=syntax:n
@@ -120,7 +123,13 @@ set number
 " View the changes you have made to a buffer since the file was loaded
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
+set noshowmode
 set laststatus=2
+
+function! CenterSplit()
+    execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _padding_' |
+                \ wincmd p
+endfunction
 
 " Highlight the trailing whitespace
 function! HLWhitespace()
@@ -158,7 +167,6 @@ au FileType coffee setl sw=2 et
 "     call HLWhitespace()
 " endif
 
-
 set pastetoggle=<F10>
 nnoremap <F11> :set nonumber!<CR>
 
@@ -174,7 +182,6 @@ if has('vim_starting')
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -202,6 +209,8 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'sjl/vitality.vim'
 
 call neobundle#end()
 
@@ -236,3 +245,10 @@ highlight link coffeeSpaceError NONE
 
 " Include JSX highlighting in `.js` files also, not just `.jsx`
 let g:jsx_ext_required = 0
+
+" Don't process focus events (Vitality) -- FocusLost/FocusGained
+" I only want the cursor to change shape
+let g:vitality_fix_focus = 0
+
+" Disable bufferline integration w/ airline (having many buffers was crowded)
+let g:airline#extensions#bufferline#enabled = 0
