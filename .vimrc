@@ -92,6 +92,10 @@ set textwidth=79
 " When set to dark, Vim will try to use colors that look good on a dark bg.
 " set background=dark
 
+" Print the line number in front of each line.
+set relativenumber
+set number
+
 " Set the color scheme.
 "colorscheme koehler
 "colorscheme elflord
@@ -100,6 +104,7 @@ colorscheme base16-ocean
 "colorscheme pablo
 let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
+highlight CursorLineNr ctermfg=gray ctermbg=0
 set fillchars+=vert:\│
 highlight VertSplit ctermfg=0 ctermbg=0
 " Remove the tildes (~) from past the EOF
@@ -111,9 +116,6 @@ set printoptions+=syntax:n
 
 highlight clear SignColumn
 let g:gitgutter_sign_modified_removed = 'x'
-
-" Print the line number in front of each line.
-set number
 
 " Highlight the screen line of the cursor with CursorLine.
 "set cursorline
@@ -201,7 +203,7 @@ NeoBundle 'tpope/vim-leiningen'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'guns/vim-clojure-highlight'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'vim-scripts/paredit.vim'
+NeoBundle 'kovisoft/paredit'
 NeoBundle 'pangloss/vim-javascript.git'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'christoomey/vim-tmux-navigator'
@@ -212,6 +214,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'sjl/vitality.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'wting/rust.vim'
 
 call neobundle#end()
 
