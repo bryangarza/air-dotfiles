@@ -104,6 +104,8 @@ alias bgcc='/usr/local/bin/gcc-4.9'
 alias gs='git status'
 alias gd='git diff'
 alias gp='git push'
+alias gca='git commit -a'
+alias gcam='gca -m'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias emacs='/usr/local/bin/emacs'
@@ -127,7 +129,7 @@ colorliststraight() {
         printf "\x1b[38;5;${i}mcolour${i} "
     done
 }
-#eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=/usr/local/sbin:$PATH
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 source /Users/bryangarza/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
