@@ -104,12 +104,14 @@ alias bgcc='/usr/local/bin/gcc-4.9'
 alias gs='git status'
 alias gd='git diff'
 alias gp='git push'
+alias ga='git add'
 alias gca='git commit -a'
 alias gcam='gca -m'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias emacs='/usr/local/bin/emacs'
 alias ec='/usr/local/bin/emacsclient'
+alias e='emacs'
 
 
 PS1="%~ λ "
