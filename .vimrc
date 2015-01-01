@@ -6,6 +6,12 @@ set encoding=utf-8
 " Set terminal title to filename
 set title
 
+" When you type the first tab hit will complete as much as possible, the second
+" tab hit will provide a list, the third and subsequent tabs will cycle through
+" completion options so you can complete the file without further keys
+set wildmode=longest,list,full
+set wildmenu
+
 " Highlight matches
 set hlsearch
 " Incremental searching
@@ -100,7 +106,7 @@ set number
 "colorscheme koehler
 "colorscheme elflord
 "colorscheme hybrid
-colorscheme base16-ocean
+colorscheme base16-eighties
 "colorscheme pablo
 let g:hybrid_use_iTerm_colors = 1
 highlight LineNr ctermfg=238 ctermbg=0
@@ -129,7 +135,7 @@ set noshowmode
 set laststatus=2
 
 function! CenterSplit()
-    execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _padding_' |
+    execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _p_' |
                 \ wincmd p
 endfunction
 
@@ -196,7 +202,7 @@ NeoBundle 'https://github.com/mattn/webapi-vim'
 NeoBundle 'eapache/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-commentary'
 "NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-classpath.git'
 NeoBundle 'tpope/vim-leiningen'
@@ -225,7 +231,7 @@ let g:gist_clip_command = 'pbcopy'
 let g:airline_theme='dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'badwolf'
+" let g:airline_theme = 'badwolf'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
