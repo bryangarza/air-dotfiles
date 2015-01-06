@@ -112,6 +112,7 @@ alias vz='vim ~/.zshrc'
 alias emacs='/usr/local/bin/emacs'
 alias ec='/usr/local/bin/emacsclient'
 alias e='emacs'
+alias rustup='curl -s https://static.rust-lang.org/rustup.sh | sudo sh'
 
 
 PS1="%~ λ "
@@ -136,3 +137,5 @@ export PATH=/usr/local/sbin:$PATH
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 source /Users/bryangarza/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /Users/bryangarza/Dropbox/bin/sshaliases
+# for Rust
+eval `/usr/libexec/path_helper -s`
