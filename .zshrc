@@ -14,6 +14,10 @@ setopt appendhistory autocd nomatch
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
+
 bindkey -v
 
 bindkey '^r' history-incremental-search-backward
@@ -104,15 +108,23 @@ alias bgcc='/usr/local/bin/gcc-4.9'
 alias gs='git status'
 alias gd='git diff'
 alias gp='git push'
+alias gpp='git pull'
 alias ga='git add'
 alias gca='git commit -a'
 alias gcam='gca -m'
+alias gb='git branch'
+alias gl='git log'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias emacs='/usr/local/bin/emacs'
 alias ec='/usr/local/bin/emacsclient'
 alias e='emacs'
 alias rustup='curl -s https://static.rust-lang.org/rustup.sh | sudo sh'
+alias kef='keybase encrypt -s frankcash -m'
+
+kdf() {
+    echo "$1" | keybase decrypt
+}
 
 
 PS1="%~ λ "
