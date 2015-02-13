@@ -151,3 +151,5 @@ source /Users/bryangarza/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /Users/bryangarza/Dropbox/bin/sshaliases
 # for Rust
 eval `/usr/libexec/path_helper -s`
+source ~/.nvm/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
