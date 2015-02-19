@@ -153,3 +153,6 @@ source /Users/bryangarza/Dropbox/bin/sshaliases
 eval `/usr/libexec/path_helper -s`
 source ~/.nvm/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+# OPAM configuration
+. /Users/bryangarza/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
