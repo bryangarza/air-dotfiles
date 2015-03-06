@@ -1,3 +1,9 @@
 [user]
 	name = Bryan Garza
 	email = brygarza@gmail.com
+[push]
+	default = simple
+[github]
+	user = bryangarza
+[core]
+	excludesfile = /Users/bryangarza/.gitignore
